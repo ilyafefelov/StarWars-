@@ -40,10 +40,26 @@ class Cards extends Component {
         total: data.count,
         page: 1,
       }))
+    }).catch(error => {
+      console.log("componentDidMount Error:" + error.message);
+      // window.location.reload();
     })
-    .catch("componentDidMount ERROR:", console.log);
-    
   };
+
+  componentDidUpdate(prevState) {
+    if (this.state.totalCount === prevState.totalCount) {
+      this.setState(()=>({ 
+        people: this.state.people,
+        next: this.state.next,
+        previous: this.state.previous,
+        prevCount: this.state.prevCount,
+        currentCount: this.state.currentCount,
+        totalCount: this.state.totalCount,
+        total: this.state.total,
+        page: 1,
+      }))
+    }
+  }
 
 
   // Functions
@@ -84,7 +100,7 @@ class Cards extends Component {
         people: data.results,
         next: data.next,
         previous: data.previous,
-        prevCount: this.state.prevCount,
+        // prevCount: this.state.prevCount,
         currentCount: this.state.people.length,
         totalCount: this.state.totalCount - this.state.people.length,
         page: this.state.page - 1,
@@ -120,12 +136,12 @@ class Cards extends Component {
         <div className="navigation-cnt">
           <a className="codelink" target="_blank" href="https://github.com/ilyafefelov/StarWars-">Go to code</a>
           {this.state.page > 1 && 
-            <button key={this.state.page+1} className='navigation-btn' onClick={this.handlePrevious}>
+            <button key={this.state.page+1} className='navigation-btn' onClick={(event) => this.handlePrevious(event)}>
               Previous
             </button>
           }
           {this.state.totalCount < this.state.total && 
-            <button key={this.state.page+1111} className='navigation-btn' onClick={this.handleNext}>
+            <button key={this.state.page+1111} className='navigation-btn' onClick={(event) => this.handleNext(event)}>
               Next
             </button>
           }
