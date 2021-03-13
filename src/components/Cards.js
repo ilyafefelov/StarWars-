@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import "../App.scss";
 import Card from "./Card";
+import ShareButton from "./ShareButton/ShareButton";
 import fetchProgress from 'fetch-progress'; 
 
 
@@ -105,16 +106,18 @@ class Cards extends Component {
           }
         </div>
         <div className="navigation-cnt">
+          <a className="codelink" target="_blank" href="https://github.com/ilyafefelov/StarWars-">Go to code</a>
           {this.state.page > 1 && 
-            <button onClick={this.handlePrevious}>
+            <button className='navigation-btn' onClick={this.handlePrevious}>
               Previous
             </button>
           }
           {this.state.currentCount < this.state.total && 
-            <button onClick={this.handleNext}>
+            <button className='navigation-btn' onClick={this.handleNext}>
               Next
             </button>
           }
+          <ShareButton></ShareButton>
         </div>
       </React.Fragment>
     );

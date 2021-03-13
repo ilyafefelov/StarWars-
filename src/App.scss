@@ -11,27 +11,9 @@
   animation: AnimationName 34s ease infinite;
 }
 
-@-webkit-keyframes AnimationName {
-    0%{background-position:52% 0%}
-    50%{background-position:49% 100%}
-    100%{background-position:52% 0%}
-}
-@-moz-keyframes AnimationName {
-    0%{background-position:52% 0%}
-    50%{background-position:49% 100%}
-    100%{background-position:52% 0%}
-}
-@keyframes AnimationName {
-    0%{background-position:52% 0%}
-    50%{background-position:49% 100%}
-    100%{background-position:52% 0%}
-
-}
-
 .cards {
   padding: 2em;
   padding-bottom: 12em;
-  // overflow-y: scroll;
   // height: 100%;
   display: flex;
   flex-wrap: wrap;
@@ -43,12 +25,20 @@
   width: -webkit-fill-available;
   bottom: 0;
   background-color: #033c9160;
-  button{
-    @extend .button-delete;
+  backdrop-filter: blur(6px);
+  .navigation-btn{
     padding: .8em;
     font-size: 22px;
-    &:first-of-type {
-      border-radius: 6px 0px 0px 6px;
+    background: #607d8bad;
+    box-shadow: none;
+    border: none;
+    margin: 0 .1em;
+    border-radius: .1em;
+    &:hover {
+      background: linear-gradient(231deg, #c909b6, #fbff00);
+      -webkit-animation: AnimationName 34s ease infinite;
+      -moz-animation: AnimationName 34s ease infinite;
+      animation: AnimationName 34s ease infinite;
     }
   }
 }
@@ -142,7 +132,7 @@
   flex-direction: row;
   justify-content: space-between;
 }
-  
+
 .comment{
   display: flex;
   align-self: flex-start;
@@ -156,11 +146,48 @@
   width: -webkit-fill-available;;
 }
 .button-delete {
-  background-color: #9e9e9e22;
+  // background-color: #9e9e9e22;
   border-radius: 0 5px 5px 0;
   box-shadow: none;
   border-style: none;
   &:hover {
     background: #FF5722;
   }
+}
+
+.codelink {
+  position: absolute;
+  background-color: rgb(245, 255, 62);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 19px;
+  left: 2em;
+  padding: .7em;
+  border-radius: .1em;
+  color:#282c34;
+  font-weight: 400;
+  text-decoration: none;
+  &:hover {
+    background: linear-gradient(231deg, #ff4ced, #ffec45);
+    border-radius: 2em;
+    font-weight: 600;
+    transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+    text-decoration: underline;
+  }
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+}
+@keyframes AnimationName {
+    0%{background-position:52% 0%}
+    50%{background-position:49% 100%}
+    100%{background-position:52% 0%}
+
 }
