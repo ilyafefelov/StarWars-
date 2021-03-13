@@ -12,7 +12,9 @@ class Cards extends Component {
       next: '', //next url
       previous: 0,
       page: 0, // current page
+      prevCount: 0,
       currentCount: 0, // current number of already fetched-displayed users
+      totalCount: 0, // current number of already fetched-displayed users
       total: 0,
       progress: 0 // current number of already fetched-displayed users
     };
@@ -32,7 +34,9 @@ class Cards extends Component {
         people: data.results,
         next: data.next,
         previous: data.previous,
+        prevCount: data.results.length,
         currentCount: data.results.length,
+        totalCount: data.results.length,
         total: data.count,
         page: 1,
       })
@@ -51,7 +55,9 @@ class Cards extends Component {
         people: data.results,
         next: data.next,
         previous: data.previous,
-        currentCount: (this.state.currentCount + data.results.length),
+        prevCount: this.state.prevCount,
+        currentCount: (data.results.length),
+        totalCount: this.state.totalCount + data.results.length,
         page: this.state.page + 1,
       })
     })
@@ -66,7 +72,8 @@ class Cards extends Component {
         people: data.results,
         next: data.next,
         previous: data.previous,
-        currentCount: (this.state.currentCount - this.state.people.length),
+        currentCount: (this.state.people.length),
+        totalCount: this.state.totalCount - this.state.people.length,
         page: this.state.page - 1,
       })
     })
@@ -75,16 +82,15 @@ class Cards extends Component {
 
 
   render() {
-    let cnt = this.state.currentCount;
-    let ln = this.state.people.length;
-    let i;
+    let cnt = (Math.ceil(this.state.totalCount/this.state.prevCount))*this.state.prevCount-this.state.prevCount; 
+
     return (
       <React.Fragment>
         <div className="cards">
           { 
             this.state.people.map((person, index) => (
               <React.Fragment key={index}>
-                <Card date={person.created} number={cnt + index-9} key={index} name={person.name} birth_year={person.birth_year} ></Card>
+                <Card date={person.created} number={index+cnt+1} key={index} name={person.name} birth_year={person.birth_year} ></Card>
               </React.Fragment>
             ))
           }
@@ -96,7 +102,7 @@ class Cards extends Component {
               Previous
             </button>
           }
-          {this.state.currentCount < this.state.total && 
+          {this.state.totalCount < this.state.total && 
             <button className='navigation-btn' onClick={this.handleNext}>
               Next
             </button>
