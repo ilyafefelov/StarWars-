@@ -3,13 +3,8 @@ import React, { Component } from 'react';
 import "../App.scss";
 import Card from "./Card";
 import ShareButton from "./ShareButton/ShareButton";
-import fetchProgress from 'fetch-progress'; 
-
 
 class Cards extends Component {
-  // state = {
-  //   people: []
-  // }
   constructor(props) {
     super(props);
     this.state = {
@@ -30,17 +25,6 @@ class Cards extends Component {
     const self = this;
     console.log("mounted App")
     fetch('https://swapi.dev/api/people')
-    // .then(
-    //   fetchProgress({
-    //     onProgress(progress) {
-    //       self.setState({ progress })
-    //       console.log("progress:", { progress });
-    //     },
-    //     onError(err) {
-    //       console.log(err);
-    //     },
-    //   })
-    // )
     .then(res => res.json())
     .then((data) => {
       console.log("initial fetch data :", data)

@@ -1,8 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
 import Comment from './Comment';
-
-
-
 
 export default class Comments extends React.Component {
     constructor(props) {
@@ -24,20 +21,17 @@ export default class Comments extends React.Component {
       event.preventDefault();
       console.log(key)
 
-      
       let oldComments = [];
       if (localStorage.getItem(`starWarsComments.${this.props.item}`)){
         oldComments = JSON.parse(localStorage.getItem(`starWarsComments.${this.props.item}`));
       }
+
       const filteredItems = oldComments.filter(item => item !== key)
-      console.log('filteredItems', filteredItems)  
-      
       let mergedComments = [...filteredItems];    
-      console.log('mergedComments', mergedComments)  
 
       localStorage.setItem((`starWarsComments.${this.props.item}`), JSON.stringify(mergedComments));
       await this.setState(state => ({comments: mergedComments }))
-      // await this.setState({comments: mergedComments })
+
     }
     
     handleChange (event) {
@@ -52,19 +46,13 @@ export default class Comments extends React.Component {
       if (localStorage.getItem(`starWarsComments.${this.props.item}`)){
         oldComments = JSON.parse(localStorage.getItem(`starWarsComments.${this.props.item}`));
       }
-      // console.log('oldComments', oldComments)
-      // this.setState({ 
-      //   comments: oldComments,
-      // })
-      // console.log('setState.comments', this.state.comments)
+  
       let newComment = this.state.value;      
-      // console.log('newComment', newComment)
+
       let mergedComments = [...oldComments,newComment];      
-      // console.log('mergedComments', mergedComments)
+
       localStorage.setItem((`starWarsComments.${this.props.item}`), JSON.stringify(mergedComments));
-      // console.log("localStorage.comment:", JSON.parse(localStorage.getItem((`starWarsComments.${this.props.item}`))))
-      
-      // await this.setState({comments: mergedComments })
+
       await this.setState(state => ({
         comments: mergedComments,
         value: ''
@@ -72,7 +60,6 @@ export default class Comments extends React.Component {
       console.log("event.target.value 1",event.target.value )
       event.target.value = '';
       console.log("event.target.value 2",event.target.value )
-      // console.log("END", this.state.comments)
       
     }
     
@@ -104,22 +91,12 @@ export default class Comments extends React.Component {
       if (this.state.comments !== prevState.comments) {
         console.log("comments loaded")
       }
-
-      // if (localStorageComments){
-      //     const index = localStorageComments.findIndex(fruit => fruit === "1");
-      //     console.log("index of 1", index)
-      //     // TODO: removing comments by index
-      // }
-
     }
 
 
     render() {
-      
-
       return (
         <div className="comments">
-          
           <form onSubmit={this.handleSubmit}>
             <label>
               Comment

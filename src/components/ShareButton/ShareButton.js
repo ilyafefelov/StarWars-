@@ -2,12 +2,12 @@ import './style.scss';
 
 const ShareButton = (props) => {
     return (
-        <button class="btn-share">
-            <span class="btn-text">Share</span
-            ><span class="btn-icon">
+        <button className="btn-share">
+            <span className="btn-text">Share</span
+            ><span className="btn-icon">
             <svg
                 t="1580465783605"
-                class="icon"
+                className="icon"
                 viewBox="0 0 1024 1024"
                 version="1.1"
                 xmlns="http://www.w3.org/2000/svg"
@@ -22,12 +22,12 @@ const ShareButton = (props) => {
                 ></path>
             </svg>
             </span>
-            <ul class="social-icons">
+            <ul className="social-icons">
             <li>
                 <a href="https://twitter.com/fefelov" target="_blank"
                 ><svg
                     t="1580195676506"
-                    class="icon"
+                    className="icon"
                     viewBox="0 0 1024 1024"
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +46,7 @@ const ShareButton = (props) => {
                 <a href="https://codepen.io/ilyafefelov" target="_blank"
                 ><svg
                     t="1580195734305"
-                    class="icon"
+                    className="icon"
                     viewBox="0 0 1024 1024"
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +65,7 @@ const ShareButton = (props) => {
                 <a href="https://github.com/fullirondesign" target="_blank"
                 ><svg
                     t="1580195767061"
-                    class="icon"
+                    className="icon"
                     viewBox="0 0 1024 1024"
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
