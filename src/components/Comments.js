@@ -106,9 +106,9 @@ export default class Comments extends React.Component {
           </form>
           <div>
             {this.state.comments && this.state.comments.map((com, index) => (
-              <div className="comments-row">
+              <div key={index} className="comments-row">
                 <Comment key={index} comment={com}></Comment>
-                <button key={index+1000000}
+                <button key={index+10000200}
                 onClick={(e) => this.handleRemove(com, e)}
                 className="button-delete"
                 >
