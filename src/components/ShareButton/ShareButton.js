@@ -3,7 +3,7 @@ import './style.scss';
 const ShareButton = (props) => {
     return (
         <button className="btn-share">
-            <span className="btn-text">Share</span
+            <span className="btn-text">My Links</span
             ><span className="btn-icon">
             <svg
                 t="1580465783605"
