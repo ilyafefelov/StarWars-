@@ -46,6 +46,7 @@ export default class Comments extends React.Component {
     
     async handleSubmit(event) {
       event.preventDefault();
+      event.stopPropagation();
 
       let oldComments = [];
       if (localStorage.getItem(`starWarsComments.${this.props.item}`)){
@@ -64,7 +65,13 @@ export default class Comments extends React.Component {
       // console.log("localStorage.comment:", JSON.parse(localStorage.getItem((`starWarsComments.${this.props.item}`))))
       
       // await this.setState({comments: mergedComments })
-      await this.setState(state => ({comments: mergedComments }))
+      await this.setState(state => ({
+        comments: mergedComments,
+        value: ''
+      }))
+      console.log("event.target.value 1",event.target.value )
+      event.target.value = '';
+      console.log("event.target.value 2",event.target.value )
       // console.log("END", this.state.comments)
       
     }
@@ -115,7 +122,7 @@ export default class Comments extends React.Component {
           <form onSubmit={this.handleSubmit}>
             <label>
               Comment
-              <input type="text" value={this.state.value} onChange={this.handleChange} />
+              <input type="text" value={this.state.value} onChange={(event) => this.handleChange(event)} />
             </label>
             <input type="submit" value="Submit" />
           </form>

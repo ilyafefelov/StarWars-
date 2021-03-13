@@ -30,7 +30,7 @@
 
 .cards {
   padding: 2em;
-  padding-bottom: 6em;
+  padding-bottom: 12em;
   // overflow-y: scroll;
   // height: 100%;
   display: flex;
@@ -40,11 +40,13 @@
 .navigation-cnt {
   padding: 2em;
   position: absolute;
+  width: -webkit-fill-available;
   bottom: 0;
   background-color: #033c9160;
   button{
     @extend .button-delete;
     padding: .8em;
+    font-size: 22px;
     &:first-of-type {
       border-radius: 6px 0px 0px 6px;
     }
