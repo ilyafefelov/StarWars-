@@ -19,7 +19,7 @@ export default class Comments extends React.Component {
     
     async handleRemove (key, event) {
       event.preventDefault();
-      console.log(key)
+      // console.log(key)
 
       let oldComments = [];
       if (localStorage.getItem(`starWarsComments.${this.props.item}`)){
@@ -57,9 +57,9 @@ export default class Comments extends React.Component {
         comments: mergedComments,
         value: ''
       }))
-      console.log("event.target.value 1",event.target.value )
+
       event.target.value = '';
-      console.log("event.target.value 2",event.target.value )
+
       
     }
     
