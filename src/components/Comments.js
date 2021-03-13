@@ -97,18 +97,19 @@ export default class Comments extends React.Component {
       if (this.props.item !== prevProps.item) {
         this.setState({ 
           item: this.props.item, //because we update item prop with a ID of a card. We use it to pul specific array of comments from local storage.
-          comments: localStorageComments
+          comments: localStorageComments,
+          value: ''
         })
       }
       if (this.state.comments !== prevState.comments) {
         console.log("comments loaded")
       }
 
-      if (localStorageComments){
-          const index = localStorageComments.findIndex(fruit => fruit === "1");
-          console.log("index of 1", index)
-          // TODO: removing comments by index
-      }
+      // if (localStorageComments){
+      //     const index = localStorageComments.findIndex(fruit => fruit === "1");
+      //     console.log("index of 1", index)
+      //     // TODO: removing comments by index
+      // }
 
     }
 
